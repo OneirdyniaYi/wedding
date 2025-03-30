@@ -45,29 +45,15 @@ class YmzxExcelCompareRecord(SQLModel, table=True):
     is_finish: int = Field(default=0)
     pipeline_url: str
 
-class TapdIterationDatas(SQLModel, table=True):
-    __tablename__ = 'tapd_iteration_datas'
-    id: int = Field(primary_key=True,default=0)
-    name: str | None = Field(default=None)
-    workspace_id: int
-    description: str | None = Field(default=None)
-    startdate: datetime | None = Field(default=None)
-    enddate: datetime | None = Field(default=None)
-    status: str | None = Field(default=None)
-    creator: str | None = Field(default=None)
-    created: datetime | None = Field(default=None)
-    completed: datetime | None = Field(default=None)
-    stories: str | None = Field(default=None)
-    bugs: str | None = Field(default=None)
-    stories_infos : str | None = Field(default=None)
-    bugs_infos : str | None = Field(default=None)
-    
-class TapdDataInfos(SQLModel, table=True):
-    __tablename__ = 'tapd_data_infos'
+    message: str
+
+
+class WeddingInfo(SQLModel, table=True):
+    __tablename__ = 'wedding_info'
     id: int = Field(primary_key=True)
-    type: str
-    infos: str
-    mtime: datetime
+    phone: str
+    name: str
+    message: str
     
     
     
@@ -219,3 +205,13 @@ class SetTapdDataInfosParam(BaseModel):
 class GetFunctionResult(BaseModel):
     functions: list
     iteration_id: int
+
+
+class SetWeddingInfo(BaseModel):
+    phone: str = ''
+    name: str = ''
+    message: str = ''
+
+class GetWeddingInfo(BaseModel):
+    phone: str | None = None
+    name: str | None = None

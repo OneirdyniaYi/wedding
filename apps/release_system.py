@@ -275,3 +275,22 @@ async def getConfigSettings(param:GetConfigSettings):
     res,type = await ConfigApi().getSettings(param.fieldKey)
     
     return {'msg': "success","data": res,"type":type}
+
+
+@Router.post("/setWeddingInfo")
+async def setWeddingInfo(param:SetWeddingInfo):
+    
+    res,errorInfo = await Mysql.get_datas(WeddingInfo,{'name':param.name},True)
+    if res:
+        rres,errorInfo = await Mysql.update_data(WeddingInfo,{'name':param.name},param.__dict__)
+    else:
+        rres,errorInfo = await Mysql.insert(WeddingInfo,[WeddingInfo(**param.__dict__)])
+    return {'msg': "success","data": rres}
+
+@Router.post("/getConfigSettings")
+async def getConfigSettings(param:GetConfigSettings):
+    
+    res,errorInfo = await Mysql.get_datas(WeddingInfo,{'name':param.name},True)
+    if res:
+        return {'msg': "success","data": res}
+    return {'msg': "error","data": errorInfo}

@@ -1,7 +1,7 @@
 {
-    "host":"30.42.130.27",
-    "user":"acm_tools",
-    "password":"GskWV*sYjbT*N2U",
-    "database":"tool_ymzx",
-    "port":"10000"
+    "host":"127.0.0.1",
+    "user":"oneirdyniayi",
+    "password":"zhangyiqun5241",
+    "database":"medding_info",
+    "port":"3306"
 }
